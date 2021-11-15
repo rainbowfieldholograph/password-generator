@@ -61,16 +61,16 @@ const specialArr = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~'.split('')
 
 const compareRandom = () => Math.random() - 0.5
 
-const form = document.getElementById('form')
+const form = document.querySelector('#form')
 
 const generatePassword = () => {
   let result = []
-  const nums = document.getElementById('numbers').checked
-  const lowerCase = document.getElementById('lowerCase').checked
-  const upperCase = document.getElementById('upperCase').checked
-  const special = document.getElementById('special').checked
-  const length = document.getElementById('length').value
-  const out = document.getElementById('result')
+  const nums = document.querySelector('#numbers').checked
+  const lowerCase = document.querySelector('#lowerCase').checked
+  const upperCase = document.querySelector('#upperCase').checked
+  const special = document.querySelector('#special').checked
+  const length = document.querySelector('#length').value
+  const out = document.querySelector('#result')
   if (nums) {
     result = result.concat(numsArr)
   }
@@ -85,7 +85,7 @@ const generatePassword = () => {
   }
   result.sort(compareRandom)
   result = result.join('').substr(0, length)
-  out.innerHTML = `${result}`
+  out.innerText = `${result}`
 }
 
 form.onsubmit = (event) => {
