@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password generator</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./defaultStyles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="header-title">Password Generator</h1>
+      </header>
+      <main>
+        <form action="" id="form">
+          <fieldset>
+            <legend>
+              <h3>Settings</h3>
+            </legend>
+            <div class="marginbtm">
+              <div>
+                <input name="numbers" id="numbers" type="checkbox" checked />
+                <label for="numbers">Numbers: 0123456789</label>
+              </div>
+              <div>
+                <input name="lowerCase" id="lowerCase" type="checkbox" checked />
+                <label for="lowerCase">Lower-case letters: abcdefghijklmnopqrstuvwxyz</label>
+              </div>
+              <div>
+                <input name="upperCase" id="upperCase" type="checkbox" />
+                <label for="upperCase">Upper-case letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ</label>
+              </div>
+              <div>
+                <input name="special" id="special" type="checkbox" />
+                <label for="special">
+                  Punctuation and special characters: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~</label
+                >
+              </div>
+            </div>
+            <div class="marginbtm">
+              <label for="length">Length of the password (min: 10, max: 50): </label>
+              <input max="50" min="10" id="length" name="length" placeholder="15" type="number" />
+            </div>
+            <button type="submit">Generate Password</button>
+          </fieldset>
+        </form>
+        <div>
+          <h2>Result:</h2>
+          <h3 id="result">...</h3>
+        </div>
+      </main>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
