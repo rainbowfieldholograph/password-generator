@@ -2,10 +2,22 @@ body {
   padding: 0;
   margin: 0;
   border: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
 }
 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
 }

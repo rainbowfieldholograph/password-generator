@@ -14,3 +14,45 @@
 .marginbtm {
   margin-bottom: 0.8em;
 }
+
+.button {
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  background-color: transparent;
+  border: 1px solid rgb(136, 136, 136);
+  transition: all 0.1s ease-in;
+  outline: black;
+}
+
+.button:hover,
+.button:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: 1px solid #000;
+  text-decoration: underline;
+}
+
+@supports selector(:focus-visible) {
+  .button:focus {
+    background-color: transparent;
+    border: 1px solid rgb(136, 136, 136);
+    color: initial;
+    text-decoration: none;
+  }
+
+  .button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid #000;
+    text-decoration: underline;
+  }
+
+  .button:focus-visible {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid #000;
+    text-decoration: underline;
+  }
+}
