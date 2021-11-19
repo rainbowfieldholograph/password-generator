@@ -10,29 +10,32 @@
   </head>
   <body>
     <div class="container">
-      <header>
+      <header class="header-flex">
         <h1 class="header-title">Password Generator</h1>
+        <a href="https://github.com/rainbowfieldholograph/password-generator">
+          Source code. Github
+        </a>
       </header>
       <main>
-        <form action="" id="form">
+        <form class="form" action="" id="form">
           <fieldset>
-            <legend>
-              <h3>Settings</h3>
+            <legend class="marginbtm">
+              <h2>Settings</h2>
             </legend>
             <div class="marginbtm">
-              <div>
+              <div class="checkbox-wrapper">
                 <input name="numbers" id="numbers" type="checkbox" checked />
                 <label for="numbers">Numbers: 0123456789</label>
               </div>
-              <div>
+              <div class="checkbox-wrapper">
                 <input name="lowerCase" id="lowerCase" type="checkbox" checked />
                 <label for="lowerCase">Lower-case letters: abcdefghijklmnopqrstuvwxyz</label>
               </div>
-              <div>
+              <div class="checkbox-wrapper">
                 <input name="upperCase" id="upperCase" type="checkbox" />
                 <label for="upperCase">Upper-case letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ</label>
               </div>
-              <div>
+              <div class="checkbox-wrapper">
                 <input name="special" id="special" type="checkbox" />
                 <label for="special">
                   Punctuation and special characters: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~</label
@@ -56,7 +59,7 @@
         </form>
         <div>
           <h2>Result:</h2>
-          <p id="result">...</p>
+          <p class="result" id="result">...</p>
         </div>
       </main>
     </div>
