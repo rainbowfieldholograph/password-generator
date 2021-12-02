@@ -3,7 +3,6 @@
   width: 100%;
   margin: 0 auto;
   background-color: #fff;
-  margin-top: 1rem;
 }
 
 @media (min-width: 360px) {
@@ -58,6 +57,7 @@
 
 .result {
   text-overflow: clip;
+  margin-left: 5px;
 }
 
 a {

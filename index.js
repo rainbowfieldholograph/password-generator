@@ -1,94 +1,48 @@
-const numsArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-const lowerCaseArr = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z',
-]
+const getRandomArbitrary = (min, max) => Math.round(min + Math.random() * (max - min))
 
-const upperCaseArr = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-]
+//https://net-comber.com/charset.html
+const getRandomLower = () => String.fromCharCode(Math.floor(getRandomArbitrary(97, 122)))
 
-const specialArr = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~'.split('')
+const getRandomUpper = () => String.fromCharCode(getRandomArbitrary(65, 90))
 
-const compareRandom = () => Math.random() - 0.5
+const getRandomNumber = () => String.fromCharCode(getRandomArbitrary(48, 57))
+
+const symbols = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~'
+const getRandomSymbol = () => symbols[getRandomArbitrary(0, symbols.length - 1)]
+
+const randomFunc = {
+  lowercase: getRandomLower,
+  uppercase: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol,
+}
+
+const generatePassword = (length, number, lowercase, uppercase, symbol) => {
+  let result = ''
+  const typesCount = number + lowercase + uppercase + symbol
+  const typesArr = [{ number }, { lowercase }, { uppercase }, { symbol }].filter(
+    (type) => Object.values(type)[0]
+  )
+  if (typesCount === 0) return ''
+  for (let i = 0; i < length; i += typesCount) {
+    typesArr.forEach((type) => {
+      const funcName = Object.keys(type)[0]
+      console.log(funcName)
+      result += randomFunc[funcName]()
+    })
+  }
+  return result
+}
 
 const form = document.querySelector('#form')
-
-const generatePassword = () => {
-  let result = []
-  const nums = document.querySelector('#numbers').checked
-  const lowerCase = document.querySelector('#lowerCase').checked
-  const upperCase = document.querySelector('#upperCase').checked
-  const special = document.querySelector('#special').checked
-  const length = document.querySelector('#length').value
-  const out = document.querySelector('#result')
-  if (nums) {
-    result = result.concat(numsArr)
-  }
-  if (lowerCase) {
-    result = result.concat(lowerCaseArr)
-  }
-  if (upperCase) {
-    result = result.concat(upperCaseArr)
-  }
-  if (special) {
-    result = result.concat(specialArr)
-  }
-  result.sort(compareRandom)
-  result = result.join('').substr(0, length)
-  out.innerText = `${result}`
-}
+const out = document.querySelector('#result')
 
 form.onsubmit = (event) => {
   event.preventDefault()
-  generatePassword()
+  const hasNums = document.querySelector('#numbers').checked
+  const hasLowerCase = document.querySelector('#lowerCase').checked
+  const hasUpperCase = document.querySelector('#upperCase').checked
+  const hasSymbols = document.querySelector('#special').checked
+  const length = document.querySelector('#length').value
+  out.innerText = generatePassword(length, hasNums, hasLowerCase, hasUpperCase, hasSymbols)
 }
