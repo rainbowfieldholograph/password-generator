@@ -23,7 +23,10 @@ const generatePassword = (length, number, lowercase, uppercase, symbol) => {
   const typesArr = [{ number }, { lowercase }, { uppercase }, { symbol }].filter(
     (type) => Object.values(type)[0]
   )
-  if (typesCount === 0) return ''
+  if (typesCount === 0 || length < 10 || length > 50) {
+    alert('error')
+    return ''
+  }
   for (let i = 0; i < length; i += typesCount) {
     typesArr.forEach((type) => {
       const funcName = Object.keys(type)[0]
