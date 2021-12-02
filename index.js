@@ -25,12 +25,11 @@ const generatePassword = (length, number, lowercase, uppercase, symbol) => {
   )
   if (typesCount === 0 || length < 10 || length > 50) {
     alert('error')
-    return ''
+    return '...'
   }
   for (let i = 0; i < length; i += typesCount) {
     typesArr.forEach((type) => {
       const funcName = Object.keys(type)[0]
-      console.log(funcName)
       result += randomFunc[funcName]()
     })
   }
