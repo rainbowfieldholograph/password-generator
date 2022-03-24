@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <title>Password Generator</title>
+    <script type="module" crossorigin src="/assets/index.2ce2fb2b.js"></script>
+    <link rel="stylesheet" href="/assets/index.9948f1ea.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header-flex">
+        <h1 class="header-title">Password Generator</h1>
+        <a href="https://github.com/rainbowfieldholograph/password-generator">
+          Source code. Github
+        </a>
+      </header>
+      <main>
+        <form class="form" action="" id="form">
+          <fieldset>
+            <legend class="margin-bottom">
+              <h2>Settings</h2>
+            </legend>
+            <div class="margin-bottom">
+              <div class="checkbox-wrapper">
+                <input name="numbers" id="numbers" type="checkbox" checked />
+                <label for="numbers">Numbers: 0123456789</label>
+              </div>
+              <div class="checkbox-wrapper">
+                <input name="lowerCase" id="lowerCase" type="checkbox" checked />
+                <label for="lowerCase">Lower-case letters: abcdefghijklmnopqrstuvwxyz</label>
+              </div>
+              <div class="checkbox-wrapper">
+                <input name="upperCase" id="upperCase" type="checkbox" />
+                <label for="upperCase">Upper-case letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ</label>
+              </div>
+              <div class="checkbox-wrapper">
+                <input name="special" id="special" type="checkbox" />
+                <label for="special">
+                  Punctuation and special characters:
+                  !"#$%&'()*+,-./:;&lt;=>?@[\]^_`{|}~</label
+                >
+              </div>
+            </div>
+            <div class="margin-bottom">
+              <label for="length">Length of the password (min: 10, max: 50): </label>
+              <input
+                value="16"
+                max="50"
+                min="10"
+                id="length"
+                name="length"
+                placeholder="15"
+                type="number"
+              />
+            </div>
+            <button class="button" type="submit">Generate Password</button>
+          </fieldset>
+        </form>
+        <div class="result-wrapper">
+          <p class="result">Result:</p>
+          <output>
+            <p class="result-pass" id="result">...</p>
+          </output>
+        </div>
+      </main>
+    </div>
+    
+  </body>
+</html>
