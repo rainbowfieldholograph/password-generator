@@ -34,6 +34,9 @@ export const generatePassword = (
   if (hasNumbers) charsArray = [...charsArray, ...NUMBERS];
   if (hasSymbol) charsArray = [...charsArray, ...SYMBOLS];
 
+  if (length < 10) return '';
+  if (!hasLowerCase && !hasUpperCase && !hasNumbers && !hasSymbol) return '';
+
   let password: string[] = [];
   for (let i = 0; i < length; i++) {
     const char = charsArray[Math.floor(Math.random() * charsArray.length)];

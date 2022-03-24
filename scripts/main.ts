@@ -5,7 +5,7 @@ const out = document.querySelector('#result') as HTMLOutputElement;
 const numbersInput = document.querySelector('#numbers') as HTMLInputElement;
 const lowerCaseInput = document.querySelector('#lowerCase') as HTMLInputElement;
 const upperCaseInput = document.querySelector('#upperCase') as HTMLInputElement;
-const symbolsInput = document.querySelector('#special') as HTMLInputElement;
+const symbolsInput = document.querySelector('#symbols') as HTMLInputElement;
 const lengthInput = document.querySelector('#length') as HTMLInputElement;
 
 form.onsubmit = (event) => {
