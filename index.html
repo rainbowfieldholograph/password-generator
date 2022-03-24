@@ -2,11 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Password generator</title>
-    <link rel="stylesheet" href="./index.css" />
-    <link rel="stylesheet" href="./defaultStyles.css" />
+    <link rel="stylesheet" href="./styles/default.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <title>Password Generator</title>
   </head>
   <body>
     <div class="container">
@@ -19,10 +18,10 @@
       <main>
         <form class="form" action="" id="form">
           <fieldset>
-            <legend class="marginbtm">
+            <legend class="margin-bottom">
               <h2>Settings</h2>
             </legend>
-            <div class="marginbtm">
+            <div class="margin-bottom">
               <div class="checkbox-wrapper">
                 <input name="numbers" id="numbers" type="checkbox" checked />
                 <label for="numbers">Numbers: 0123456789</label>
@@ -38,11 +37,12 @@
               <div class="checkbox-wrapper">
                 <input name="special" id="special" type="checkbox" />
                 <label for="special">
-                  Punctuation and special characters: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~</label
+                  Punctuation and special characters:
+                  !"#$%&'()*+,-./:;&lt;=>?@[\]^_`{|}~</label
                 >
               </div>
             </div>
-            <div class="marginbtm">
+            <div class="margin-bottom">
               <label for="length">Length of the password (min: 10, max: 50): </label>
               <input
                 value="16"
@@ -65,6 +65,6 @@
         </div>
       </main>
     </div>
-    <script src="./index.js"></script>
+    <script type="module" src="/scripts/main.ts"></script>
   </body>
 </html>

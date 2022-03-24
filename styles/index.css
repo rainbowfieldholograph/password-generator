@@ -3,6 +3,7 @@
   width: 100%;
   margin: 0 auto;
   background-color: #fff;
+  font-size: 16px;
 }
 
 @media (min-width: 360px) {
@@ -24,8 +25,8 @@
   text-align: center;
 }
 
-.marginbtm {
-  margin-bottom: 1em;
+.margin-bottom {
+  margin-bottom: 1rem;
 }
 
 .form {
@@ -33,14 +34,14 @@
 }
 
 .checkbox-wrapper {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 
 .button {
   font-size: 1rem;
   line-height: 1;
-  padding: 0.5em 1em;
-  border-radius: 0.5em;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   background-color: transparent;
   border: 1px solid rgb(136, 136, 136);
   transition: all 0.1s ease-in;
@@ -49,23 +50,23 @@
 
 .button:hover,
 .button:focus {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  opacity: 0.5;
+  transform: scale(1.04);
   border: 1px solid #000;
   text-decoration: underline;
 }
 
 .result {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 
 .result-pass {
-  font-size: 1.6em;
+  font-size: 1.6rem;
   border: 1px solid #000;
   text-align: center;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  padding: 0.5em;
+  padding: 0.5rem;
 }
 
 @media (max-width: 360px) {
@@ -98,35 +99,4 @@ a::before {
 a:hover::before,
 a:focus::before {
   transform: scaleX(1);
-}
-
-@supports selector(:focus-visible) {
-  .button:focus {
-    background-color: transparent;
-    border: 1px solid rgb(136, 136, 136);
-    color: initial;
-    text-decoration: none;
-  }
-
-  .button:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: 1px solid #000;
-    text-decoration: underline;
-  }
-
-  .button:focus-visible {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: 1px solid #000;
-    text-decoration: underline;
-  }
-
-  a:focus::before {
-    transform: scaleX(0);
-  }
-
-  a:focus-visible::before {
-    transform: scaleX(1);
-  }
 }
