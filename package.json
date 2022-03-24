@@ -1,5 +1,5 @@
 {
-  "name": "password-generator-ts",
+  "name": "password-generator",
   "private": true,
   "version": "1.0.0",
   "scripts": {
