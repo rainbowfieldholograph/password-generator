@@ -1,4 +1,4 @@
-const stringsArrayFromCharcodes = (low: number, high: number) => {
+const stringsArrayFromCharcodes = (low: number, high: number): string[] => {
   const result = [];
   for (let i = low; i <= high; i++) {
     result.push(String.fromCharCode(i));
@@ -11,14 +11,11 @@ const UPPERCASES = stringsArrayFromCharcodes(65, 90);
 const LOWERCASES = stringsArrayFromCharcodes(97, 122);
 const NUMBERS = stringsArrayFromCharcodes(48, 57);
 
-const arrayHasElementFromArray = <T>(firstArray: T[], secondArray: T[]): boolean => {
-  for (let i = secondArray.length; i > 0; i--) {
-    const element = secondArray[i];
-    if (firstArray.includes(element)) {
-      return true;
-    }
-  }
-  return false;
+const MIN_LENGTH = 4;
+
+export const getRandomInteger = (min: number, max: number): number => {
+  const random = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(random);
 };
 
 export const generatePassword = (
@@ -29,31 +26,31 @@ export const generatePassword = (
   hasSymbol: boolean
 ): string => {
   let charsArray: string[] = [];
-  if (hasUpperCase) charsArray = [...charsArray, ...UPPERCASES];
-  if (hasLowerCase) charsArray = [...charsArray, ...LOWERCASES];
-  if (hasNumbers) charsArray = [...charsArray, ...NUMBERS];
-  if (hasSymbol) charsArray = [...charsArray, ...SYMBOLS];
+  const condsAndChars: [boolean, string[]][] = [
+    [hasLowerCase, LOWERCASES],
+    [hasUpperCase, UPPERCASES],
+    [hasNumbers, NUMBERS],
+    [hasSymbol, SYMBOLS],
+  ];
 
-  if (length < 10) return '';
-  if (!hasLowerCase && !hasUpperCase && !hasNumbers && !hasSymbol) return '';
+  if (length < MIN_LENGTH) return '';
+
+  for (const [cond, chars] of condsAndChars) {
+    if (cond) charsArray = [...charsArray, ...chars];
+  }
 
   let password: string[] = [];
   for (let i = 0; i < length; i++) {
-    const char = charsArray[Math.floor(Math.random() * charsArray.length)];
+    const randomIndex = getRandomInteger(0, charsArray.length);
+    const char = charsArray[randomIndex];
     password.push(char);
   }
 
-  if (hasUpperCase && !arrayHasElementFromArray(password, UPPERCASES)) {
-    return generatePassword(length, hasNumbers, hasLowerCase, hasUpperCase, hasSymbol);
-  }
-  if (hasLowerCase && !arrayHasElementFromArray(password, LOWERCASES)) {
-    return generatePassword(length, hasNumbers, hasLowerCase, hasUpperCase, hasSymbol);
-  }
-  if (hasNumbers && !arrayHasElementFromArray(password, NUMBERS)) {
-    return generatePassword(length, hasNumbers, hasLowerCase, hasUpperCase, hasSymbol);
-  }
-  if (hasSymbol && !arrayHasElementFromArray(password, SYMBOLS)) {
-    return generatePassword(length, hasNumbers, hasLowerCase, hasUpperCase, hasSymbol);
+  for (const [cond, chars] of condsAndChars) {
+    const passHasChar = password.some((char) => chars.includes(char));
+    if (cond && !passHasChar) {
+      return generatePassword(length, hasNumbers, hasLowerCase, hasUpperCase, hasSymbol);
+    }
   }
 
   return password.join('');

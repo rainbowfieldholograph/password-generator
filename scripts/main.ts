@@ -10,10 +10,13 @@ const lengthInput = document.querySelector('#length') as HTMLInputElement;
 
 form.onsubmit = (event) => {
   event.preventDefault();
+
   const hasNums = numbersInput.checked;
   const hasLowerCase = lowerCaseInput.checked;
   const hasUpperCase = upperCaseInput.checked;
   const hasSymbols = symbolsInput.checked;
   const length = lengthInput.value;
-  out.innerText = generatePassword(+length, hasNums, hasLowerCase, hasUpperCase, hasSymbols);
+
+  const password = generatePassword(+length, hasNums, hasLowerCase, hasUpperCase, hasSymbols);
+  out.innerText = password;
 };
