@@ -1,4 +1,6 @@
-const stringsArrayFromCharcodes = (low: number, high: number): string[] => {
+import { GeneratePasswordParams } from './generatePassword.d';
+
+const arrayFromCharcodes = (low: number, high: number): string[] => {
   const result = [];
   for (let i = low; i <= high; i++) {
     result.push(String.fromCharCode(i));
@@ -7,9 +9,9 @@ const stringsArrayFromCharcodes = (low: number, high: number): string[] => {
 };
 
 const SYMBOLS = Array.from('!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~');
-const UPPERCASES = stringsArrayFromCharcodes(65, 90);
-const LOWERCASES = stringsArrayFromCharcodes(97, 122);
-const NUMBERS = stringsArrayFromCharcodes(48, 57);
+const UPPERCASES = arrayFromCharcodes(65, 90);
+const LOWERCASES = arrayFromCharcodes(97, 122);
+const NUMBERS = arrayFromCharcodes(48, 57);
 
 const MIN_LENGTH = 4;
 
@@ -19,19 +21,14 @@ export const getRandomInteger = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-export const generatePassword = (
-  length: number,
-  hasNumbers: boolean,
-  hasLowerCase: boolean,
-  hasUpperCase: boolean,
-  hasSymbol: boolean
-): string => {
+export const generatePassword = (params: GeneratePasswordParams): string => {
   let charsArray: string[] = [];
+  const { length, hasNumbers, hasLowerCase, hasUpperCase, hasSymbols } = params;
   const condsAndChars: [boolean, string[]][] = [
     [hasLowerCase, LOWERCASES],
     [hasUpperCase, UPPERCASES],
     [hasNumbers, NUMBERS],
-    [hasSymbol, SYMBOLS],
+    [hasSymbols, SYMBOLS],
   ];
 
   if (length < MIN_LENGTH) return '';
@@ -46,12 +43,13 @@ export const generatePassword = (
     const char = charsArray[randomIndex];
     password.push(char);
   }
+  // const password = new Array(length)
+  //   .fill(null)
+  //   .map(() => charsArray[getRandomInteger(0, charsArray.length)]);
 
   for (const [cond, chars] of condsAndChars) {
     const passHasChar = password.some((char) => chars.includes(char));
-    if (cond && !passHasChar) {
-      return generatePassword(length, hasNumbers, hasLowerCase, hasUpperCase, hasSymbol);
-    }
+    if (cond && !passHasChar) return generatePassword(params);
   }
 
   return password.join('');
