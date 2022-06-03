@@ -1,9 +1,10 @@
 import { GeneratePasswordParams } from './generatePassword.d';
 
 const arrayFromCharcodes = (low: number, high: number): string[] => {
-  const result = [];
-  for (let i = low; i <= high; i++) {
-    result.push(String.fromCharCode(i));
+  const length = high - low;
+  const result = new Array(length);
+  for (let i = 0, l = low; i <= length; i++) {
+    result[i] = String.fromCharCode(l++);
   }
   return result;
 };
@@ -37,15 +38,10 @@ export const generatePassword = (params: GeneratePasswordParams): string => {
     if (cond) charsArray = [...charsArray, ...chars];
   }
 
-  let password: string[] = [];
-  for (let i = 0; i < length; i++) {
-    const randomIndex = getRandomInteger(0, charsArray.length);
-    const char = charsArray[randomIndex];
-    password.push(char);
-  }
-  // const password = new Array(length)
-  //   .fill(null)
-  //   .map(() => charsArray[getRandomInteger(0, charsArray.length)]);
+  const password = Array.from(
+    { length },
+    () => charsArray[getRandomInteger(0, charsArray.length)]
+  );
 
   for (const [cond, chars] of condsAndChars) {
     const passHasChar = password.some((char) => chars.includes(char));
