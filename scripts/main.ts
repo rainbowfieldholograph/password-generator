@@ -1,4 +1,4 @@
-import { generatePassword } from './generatePassword';
+import { generatePassword } from './generate-password';
 
 const form = document.querySelector('#form') as HTMLFormElement;
 const out = document.querySelector('#result') as HTMLOutputElement;

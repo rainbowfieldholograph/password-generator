@@ -1,4 +1,10 @@
-import { GeneratePasswordParams } from './generatePassword.d';
+export interface GeneratePasswordParams {
+  length: number;
+  hasNumbers: boolean;
+  hasLowerCase: boolean;
+  hasUpperCase: boolean;
+  hasSymbols: boolean;
+};
 
 const arrayFromCharcodes = (low: number, high: number): string[] => {
   const length = high - low;
