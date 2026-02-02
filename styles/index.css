@@ -24,6 +24,11 @@
   text-align: center;
 }
 
+.header-warning {
+  font-size: 1.25rem;
+  color: hsl(0, 100%, 50%);
+}
+
 .margin-bottom {
   margin-bottom: 1rem;
 }
